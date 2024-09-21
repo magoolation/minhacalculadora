@@ -13,5 +13,16 @@ if (operacao == "+")
     Console.WriteLine($"A soma de {x} + {y} = {x + y}");
 else if (operacao == "-")
     Console.WriteLine($"A diferença de {x} - {y} = {x - y}");
+else if (operacao == "*")
+    Console.WriteLine($"O produto de {x} * {y} = {x * y}");
+else if (operacao == "/")
+{
+    if (y == 0)
+    {
+        Console.WriteLine("Erro de divisão por zero.");
+    }
+    else
+        Console.WriteLine($"A divisÃo de {x} / {y} = {x / y}");
+}
 else
     Console.WriteLine($"Operação {operacao} é inválida.");
