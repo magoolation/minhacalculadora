@@ -6,6 +6,12 @@ Console.WriteLine("Informe o primeiro número: ");
 int x = int.Parse(Console.ReadLine());
 Console.WriteLine("Informe o segundo número: ");
 int y = int.Parse(Console.ReadLine());
+Console.WriteLine("Qual a operação: ");
+string operacao = Console.ReadLine();
 
-
-Console.WriteLine($"A soma de {x} + {y} = {x + y}");
+if (operacao == "+")
+    Console.WriteLine($"A soma de {x} + {y} = {x + y}");
+else if (operacao == "-")
+    Console.WriteLine($"A diferença de {x} - {y} = {x - y}");
+else
+    Console.WriteLine($"Operação {operacao} é inválida.");
