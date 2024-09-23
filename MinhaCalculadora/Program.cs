@@ -11,20 +11,27 @@ int y = int.Parse(Console.ReadLine());
 Console.WriteLine("Qual a operação: ");
 string operacao = Console.ReadLine();
 
-if (operacao == "+")
-    Console.WriteLine($"A soma de {x} + {y} = {Calculadora.Somar(x,y)}");
-else if (operacao == "-")
-    Console.WriteLine($"A diferença de {x} - {y} = {Calculadora.Subtrair(x,y)}");
-else if (operacao == "*")
-    Console.WriteLine($"O produto de {x} * {y} = {Calculadora.Multiplicar(x,y)}");
-else if (operacao == "/")
+if (operacao != "+" &&
+    operacao != "-" &&
+    operacao != "*" &&
+    operacao != "/")
 {
-    if (y == 0)
-    {
-        Console.WriteLine("Erro de divisão por zero.");
-    }
-    else
-        Console.WriteLine($"A divisÃo de {x} / {y} = {Calculadora.Dividir(x,y)}");
-}
-else
     Console.WriteLine($"Operação {operacao} é inválida.");
+    return;
+}
+
+if (operacao == "/" && y == 0)
+{
+    Console.WriteLine("Erro de divisão por zero.");
+    return;
+}
+
+int resultado = Calculadora.Calcular(operacao, x, y);
+
+Console.WriteLine(operacao switch
+{
+    "+"=> $"A soma de {x} + {y} = {resultado}",
+    "-" => $"A diferença de {x} - {y} = {resultado}",
+    "*" => $"O produto de {x} * {y} = {resultado}",
+    "/" => $"A divisÃo de {x} / {y} = {resultado}"
+}  );
