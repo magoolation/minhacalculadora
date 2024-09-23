@@ -1,0 +1,7 @@
+<Solution>
+  <Properties Name="Visual Studio">
+    <Property Name="OpenWith" Value="Visual Studio Version 17" />
+  </Properties>
+  <Project Path="MinhaCalculadora.Tests\MinhaCalculadora.Tests.csproj" Type="C#" />
+  <Project Path="MinhaCalculadora\MinhaCalculadora.csproj" Type="C#" />
+</Solution>
