@@ -9,18 +9,17 @@ int x = int.Parse(Console.ReadLine());
 Console.WriteLine("Informe o segundo número: ");
 int y = int.Parse(Console.ReadLine());
 Console.WriteLine("Qual a operação: ");
-string operacao = Console.ReadLine();
+string input = Console.ReadLine();
 
-if (operacao != "+" &&
-    operacao != "-" &&
-    operacao != "*" &&
-    operacao != "/")
+if (input.IsOperacao())
 {
-    Console.WriteLine($"Operação {operacao} é inválida.");
+    Console.WriteLine($"Operação {input} é inválida.");
     return;
 }
 
-if (operacao == "/" && y == 0)
+Operacao operacao = input.ToOperacao();
+
+if (operacao == Operacao.Divisao && y == 0)
 {
     Console.WriteLine("Erro de divisão por zero.");
     return;
@@ -30,8 +29,8 @@ int resultado = Calculadora.Calcular(operacao, x, y);
 
 Console.WriteLine(operacao switch
 {
-    "+"=> $"A soma de {x} + {y} = {resultado}",
-    "-" => $"A diferença de {x} - {y} = {resultado}",
-    "*" => $"O produto de {x} * {y} = {resultado}",
-    "/" => $"A divisÃo de {x} / {y} = {resultado}"
+    Operacao.Soma => $"A soma de {x} + {y} = {resultado}",
+    Operacao.Subtracao => $"A diferença de {x} - {y} = {resultado}",
+    Operacao.Multiplicacao => $"O produto de {x} * {y} = {resultado}",
+    Operacao.Divisao => $"A divisÃo de {x} / {y} = {resultado}"
 }  );
